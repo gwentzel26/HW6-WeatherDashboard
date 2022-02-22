@@ -1,0 +1,30 @@
+header {
+    background: linear-gradient(rgb(148, 209, 246),rgb(25, 25, 102) );
+    margin: -10px;
+}
+h1 {
+    text-align: center;
+    margin: 0px;
+    padding: 20px;
+    color: rgb(238, 226, 226);
+    font-family: Geneva, Tahoma, sans-serif;
+    
+}
+
+main {
+    margin: 20px;
+    margin-top: 40px;
+}
+
+#userSearch {
+    width: 140px;
+    height: 30px;
+    font-size: 16px;
+}
+
+#searchBtn {
+    background: rgb(80, 80, 148);
+    color: rgb(238, 226, 226);
+    height: 25px;
+    width: 70px;
+}
