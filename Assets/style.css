@@ -1,3 +1,6 @@
+body {
+    background-color: rgb(184, 211, 212);
+}
 header {
     background: linear-gradient(rgb(148, 209, 246),rgb(25, 25, 102) );
     margin: -10px;
@@ -27,4 +30,36 @@ main {
     color: rgb(238, 226, 226);
     height: 25px;
     width: 70px;
+}
+
+#todayCityData {
+    font-size: 18px;
+    list-style-type: none;
+    
+}
+
+/* styling current weather card container */
+.card {
+    background-color: rgb(245, 233, 212);
+    padding: 2px;
+    padding-left: 2px;
+    width: 340px;
+    border: 5px solid rgb(231, 190, 190);
+    border-style: double;
+}
+
+/* the current date line */
+#todayDate {
+   font-size: 26px;
+   margin: 15px;
+}
+
+/* formatting the list of current weather attributes */
+#currentList {
+    list-style-type: none;
+    margin: 20px;
+    font-size: 26px;
+}
+#uvi {
+    
 }
