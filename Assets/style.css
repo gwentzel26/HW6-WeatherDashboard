@@ -52,6 +52,7 @@ main {
 #todayDate {
    font-size: 26px;
    margin: 15px;
+   font-family: monospace;
 }
 
 /* formatting the list of current weather attributes */
@@ -59,7 +60,36 @@ main {
     list-style-type: none;
     margin: 20px;
     font-size: 26px;
+    font-family: monospace;
 }
 #uvi {
     
+}
+/* 5-day forecast classes and ids */
+.forecast {
+    display: inline-block;
+    /* background: linear-gradient(rgb(148, 209, 246),rgb(97, 97, 224) ); */
+    background: linear-gradient(rgb(148, 209, 246),rgb(25, 25, 102) );
+    text-align: justify;
+    width: 19%;
+    color: whitesmoke;
+    border: 2px solid rgb(255, 239, 239);
+    border-style: dashed;
+    align-items: center;
+    flex-wrap: wrap;
+    font-family: monospace;
+}
+
+#cityForecast {
+    font-size: 30px;
+    padding: 15px;
+}
+#forecastDay {
+    margin: 40px;
+    font-size: 24px;
+    
+}
+#forecastList {
+    list-style-type: none;
+    font-size: 20px;
 }

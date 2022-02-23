@@ -1,42 +1,14 @@
-var cityName ;
 
+var cityName ;
 var apiKey = "ae2375bc15cf157baedc57216574cc2c";
 var searchBtn = document.querySelector('#searchBtn');
 var citySearch = document.querySelector('#userSearch');
 var cityHeader = document.querySelector('#cityHeader');
 var cityData = document.getElementById('todayCityData');
+var forecast = document.getElementById('forecast');
 
-const data = [{
-    date: "02/22/22",
-    temperature: 74,
-    humidity: 50,
-    windspeed: 277,
-    uvi: .5
-}]
-
-
-
-// for (let i=0; i <data.length; i++) {
-// // const newCard = document.createElement("div");
-// // newCard.setAttribute("class", "card");
-
-// // newCard.innerHTML =  `<h3>Date: ${data[i].date} </h3>
-// // <ul>
-// //     <li>UV index: ${data[i].uvi}</li>
-// //     <li>Wind Speed: ${data[i].windspeed}</li>
-// //     <li>Temperature: ${data[i].temperature}</li>
-// //     <li>Humidity: ${data[i].humidity} %</li>
-// // </ul>`
-// // todayCityData.appendChild(newCard);
-// }
-
-
-
-// const oneCallApi = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&appid=" + apiKey;
-// 4, 12, 20, 28, 36
-
-// searchBtn.addEventListener('click', displayCity);
-
+// event listener for the search button.  Saves user search in local storage and displays it as cityHeader, 
+// then calls the next function
 searchBtn.addEventListener('click', saveInput);
 cityHeader.textContent = localStorage.getItem('city');
 
@@ -48,8 +20,6 @@ function saveInput()
        cityName = citySearch.value;
        fiveDayCall();
     }
-
-
 
 function fiveDayCall() {
     const fiveDayApi = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&appid=" + apiKey;
@@ -73,6 +43,25 @@ function fiveDayCall() {
              day4,
              day5
         ]
+
+        // for loop cycling through the fiveDayArr to generate day for five day forecast
+
+        for (let i=0; i <fiveDayArr.length; i++) {
+        const fiveCast = document.createElement("div");
+        fiveCast.setAttribute("class", "forecast");
+        
+        // temperature code converts from Kelvin to farenheit and rounds to the nearest integer
+        fiveCast.innerHTML =  `
+        <h2 id="cityForecast">${cityName}</h2>
+        <h3 id="forecastDay">Day ${i+1} </h3>
+        <ul id="forecastList" >
+            <li>Temperature: ${Math.round((fiveDayArr[i].main.temp - 273.15)*(9/5)+32)} °F</li>
+            <li>Wind Speed: ${fiveDayArr[i].wind.speed}</li>
+            <li>Humidity: ${fiveDayArr[i].main.humidity} %</li>
+        </ul>`
+       forecast.appendChild(fiveCast);
+        }
+        
         
         let lat = data.city.coord.lat;
         let lon = data.city.coord.lon;
@@ -94,12 +83,13 @@ function oneDayCall(lat, lon, fiveDayArr) {
         // console.log(data);
         var currentData = data.current;
         console.log(currentData);
+        // formatting the current date
         var today = new Date();
         var dd = String(today.getDate()).padStart(2, '0');
         var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
         var yyyy = today.getFullYear();
-
-today = mm + '/' + dd + '/' + yyyy;
+        today = mm + '/' + dd + '/' + yyyy;
+        // creating a div of current weather to append to the dom
         const currentDiv = document.createElement("div");
         currentDiv.setAttribute("class", "card");
 
@@ -116,4 +106,5 @@ todayCityData.appendChild(currentDiv);
 }
 
 fiveDayCall();
+saveInput();
 
