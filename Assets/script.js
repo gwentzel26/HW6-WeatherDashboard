@@ -6,18 +6,39 @@ var citySearch = document.querySelector('#userSearch');
 var cityHeader = document.querySelector('#cityHeader');
 var cityData = document.getElementById('todayCityData');
 var forecast = document.getElementById('forecast');
+var recentSearches = document.getElementById('recentSearches');
+var searchArr = [];
+var searchIndex = 0;
 
 // event listener for the search button.  Saves user search in local storage and displays it as cityHeader, 
 // then calls the next function
 searchBtn.addEventListener('click', saveInput);
-cityHeader.textContent = localStorage.getItem('city');
+// cityHeader.textContent = localStorage.getItem('city');
 
 function saveInput() 
     {
         localStorage.setItem("city", citySearch.value);
         console.log(citySearch);
-       cityHeader.textContent = citySearch.value;
+    //    cityHeader.textContent = citySearch.value;
        cityName = citySearch.value;
+       searchArr.push(cityName);
+       localStorage.setItem('names', JSON.stringify(searchArr)); 
+       var storedNames = JSON.parse(localStorage.getItem("names")); 
+
+      
+            const searchHistory = document.createElement("div");
+            searchHistory.setAttribute("class", "recentSearches");
+            searchHistory.innerHTML = `
+            <ul id="searchList">
+                <li>${searchArr[searchIndex]}</li>
+            </ul>
+            `
+            
+            recentSearches.appendChild(searchHistory);
+            searchIndex++;
+            
+       
+       
        fiveDayCall();
     }
 
@@ -52,14 +73,20 @@ function fiveDayCall() {
         
         // temperature code converts from Kelvin to farenheit and rounds to the nearest integer
         fiveCast.innerHTML =  `
-        <h2 id="cityForecast">${cityName}</h2>
+        <h2 id="cityForecast">${searchArr[searchArr.length -1]}</h2>
         <h3 id="forecastDay">Day ${i+1} </h3>
         <ul id="forecastList" >
-            <li>Temperature: ${Math.round((fiveDayArr[i].main.temp - 273.15)*(9/5)+32)} °F</li>
+            <li>Temperature: ${Math.round((fiveDayArr[i].main.temp - 273.15)*(9/5)+32)}°F</li>
             <li>Wind Speed: ${fiveDayArr[i].wind.speed}</li>
-            <li>Humidity: ${fiveDayArr[i].main.humidity} %</li>
+            <li>Humidity: ${fiveDayArr[i].main.humidity}%</li>
         </ul>`
        forecast.appendChild(fiveCast);
+
+
+            // not working array replacement
+       if (searchArr.length >1) {
+           searchArr[searchArr.length -1].replace(searchArr[searchArr.length-2]);
+       }
         }
         
         
@@ -93,11 +120,13 @@ function oneDayCall(lat, lon, fiveDayArr) {
         const currentDiv = document.createElement("div");
         currentDiv.setAttribute("class", "card");
 
-        currentDiv.innerHTML =  `<h3 id="todayDate" >Date: ${today} </h3>
+        currentDiv.innerHTML =  `
+        <h2 id="cityHeader">${searchArr[searchArr.length-1]} </h2>
+        <h3 id="todayDate" >Date: ${today} </h3>
 <ul id = currentList>
-    <li>Temperature: ${Math.round((currentData.temp - 273.15)*(9/5)+32) } °F</li>
+    <li>Temperature: ${Math.round((currentData.temp - 273.15)*(9/5)+32) }°F</li>
     <li>Wind Speed: ${currentData.wind_speed} MPH</li>
-    <li>Humidity: ${currentData.humidity} %</li>
+    <li>Humidity: ${currentData.humidity}%</li>
     <li id = "uvi">UV index: ${currentData.uvi} </li>
 </ul>`
 todayCityData.appendChild(currentDiv);

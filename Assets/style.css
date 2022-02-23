@@ -1,5 +1,6 @@
 body {
     background-color: rgb(184, 211, 212);
+    
 }
 header {
     background: linear-gradient(rgb(148, 209, 246),rgb(25, 25, 102) );
@@ -10,8 +11,16 @@ h1 {
     margin: 0px;
     padding: 20px;
     color: rgb(238, 226, 226);
-    font-family: Geneva, Tahoma, sans-serif;
+    font-size: 44px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     
+}
+
+#searchNav {
+    width: 20%;
+}
+h2 {
+    font-size: 32px;
 }
 
 main {
@@ -35,6 +44,7 @@ main {
 #todayCityData {
     font-size: 18px;
     list-style-type: none;
+    margin: 0 auto;
     
 }
 
@@ -43,9 +53,15 @@ main {
     background-color: rgb(245, 233, 212);
     padding: 2px;
     padding-left: 2px;
-    width: 340px;
+    width: 840px;
     border: 5px solid rgb(231, 190, 190);
     border-style: double;
+    margin: auto;
+}
+#cityHeader {
+    font-family: monospace;
+    padding: 15px;
+    padding-top: 10px;
 }
 
 /* the current date line */
@@ -67,6 +83,8 @@ main {
 }
 /* 5-day forecast classes and ids */
 .forecast {
+    display: flex;
+    flex-wrap: wrap;
     display: inline-block;
     /* background: linear-gradient(rgb(148, 209, 246),rgb(97, 97, 224) ); */
     background: linear-gradient(rgb(148, 209, 246),rgb(25, 25, 102) );
@@ -76,7 +94,7 @@ main {
     border: 2px solid rgb(255, 239, 239);
     border-style: dashed;
     align-items: center;
-    flex-wrap: wrap;
+    
     font-family: monospace;
 }
 
@@ -92,4 +110,15 @@ main {
 #forecastList {
     list-style-type: none;
     font-size: 20px;
+    flex-wrap: wrap;
 }
+
+/* search history section */
+#searchHistory {
+    font-size: 24px;
+}
+
+#searchList {
+    list-style-type: none;
+}
+
