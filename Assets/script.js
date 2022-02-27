@@ -7,37 +7,74 @@ var cityHeader = document.querySelector('#cityHeader');
 var cityData = document.getElementById('todayCityData');
 var forecast = document.getElementById('forecast');
 var recentSearches = document.getElementById('recentSearches');
-var searchArr = [];
-var searchIndex = 0;
+var fiveDayTitle = document.getElementById('fiveDayTitle');
+var forecastDates = document.getElementById('forecastDates');
+var searchArr ;
+var searchIndex ;
 
 // event listener for the search button.  Saves user search in local storage and displays it as cityHeader, 
 // then calls the next function
-searchBtn.addEventListener('click', saveInput);
-// cityHeader.textContent = localStorage.getItem('city');
-
-function saveInput() 
-    {
-        localStorage.setItem("city", citySearch.value);
+searchBtn.addEventListener('click', function() {
+    localStorage.setItem("city", citySearch.value);
         console.log(citySearch);
     //    cityHeader.textContent = citySearch.value;
        cityName = citySearch.value;
+    saveInput(cityName);
+});
+// cityHeader.textContent = localStorage.getItem('city');
+var storedNames = JSON.parse(localStorage.getItem("names")); 
+console.log(storedNames)
+if (storedNames) {
+    searchArr = [...storedNames];
+    searchIndex = searchArr.length;
+} else {
+    searchArr = [];
+    searchIndex = 0;
+}
+for (let i=0; i < searchArr.length; i++) {
+    const searchHistory = document.getElementById("searchList");
+    const searchLi = document.createElement("li");
+    searchLi.setAttribute("class", "prevSearch");
+    searchLi.textContent = `${searchArr[i]}`
+    searchHistory.append(searchLi);
+    recentSearches.appendChild(searchHistory);
+}
+
+var prevSearches = document.querySelectorAll(".prevSearch");
+ for(let i=0; i < prevSearches.length; i++) {
+        console.log(prevSearches[i]);
+        prevSearches[i].addEventListener("click", function(event) {
+           var searchText = event.target.textContent;
+           cityName = searchText;
+           console.log(cityName);
+           cityData.innerHTML = ``;
+           forecast.innerHTML = ``;
+           cityData.append(cityHeader);
+           forecast.append(fiveDayTitle);
+           forecast.append(forecastDates);
+           fiveDayCall();
+        })
+    }
+ 
+function saveInput(cityName) 
+    {
        searchArr.push(cityName);
        localStorage.setItem('names', JSON.stringify(searchArr)); 
-       var storedNames = JSON.parse(localStorage.getItem("names")); 
+    //    var storedNames = JSON.parse(localStorage.getItem("names")); 
 
       
-            const searchHistory = document.createElement("div");
-            searchHistory.setAttribute("class", "recentSearches");
-            searchHistory.innerHTML = `
-            <ul id="searchList">
-                <li>${searchArr[searchIndex]}</li>
-            </ul>
-            `
-            
+            const searchHistory = document.getElementById("searchList");
+            const searchLi = document.createElement("li");
+            searchLi.textContent = `${searchArr[searchIndex]}`
+            searchHistory.append(searchLi);
             recentSearches.appendChild(searchHistory);
             searchIndex++;
             
-       
+       cityData.innerHTML = ``;
+       forecast.innerHTML = ``;
+       cityData.append(cityHeader);
+       forecast.append(fiveDayTitle);
+       forecast.append(forecastDates);
        
        fiveDayCall();
     }
@@ -73,7 +110,7 @@ function fiveDayCall() {
         
         // temperature code converts from Kelvin to farenheit and rounds to the nearest integer
         fiveCast.innerHTML =  `
-        <h2 id="cityForecast">${searchArr[searchArr.length -1]}</h2>
+        <h2 id="cityForecast">${cityName}</h2>
         <h3 id="forecastDay">Day ${i+1} </h3>
         <ul id="forecastList" >
             <li>Temperature: ${Math.round((fiveDayArr[i].main.temp - 273.15)*(9/5)+32)}°F</li>
@@ -121,7 +158,7 @@ function oneDayCall(lat, lon, fiveDayArr) {
         currentDiv.setAttribute("class", "card");
 
         currentDiv.innerHTML =  `
-        <h2 id="cityHeader">${searchArr[searchArr.length-1]} </h2>
+        <h2 id="cityHeader">${cityName} </h2>
         <h3 id="todayDate" >Date: ${today} </h3>
 <ul id = currentList>
     <li>Temperature: ${Math.round((currentData.temp - 273.15)*(9/5)+32) }°F</li>
@@ -135,5 +172,5 @@ todayCityData.appendChild(currentDiv);
 }
 
 fiveDayCall();
-saveInput();
+// saveInput();
 
