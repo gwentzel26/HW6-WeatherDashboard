@@ -9,6 +9,7 @@ var forecast = document.getElementById('forecast');
 var recentSearches = document.getElementById('recentSearches');
 var fiveDayTitle = document.getElementById('fiveDayTitle');
 var forecastDates = document.getElementById('forecastDates');
+var clearHisotry = document.getElementById('clearHistory');
 var searchArr ;
 var searchIndex ;
 
@@ -169,6 +170,12 @@ function oneDayCall(lat, lon, fiveDayArr) {
 todayCityData.appendChild(currentDiv);
    
 })
+}
+
+clearHisotry.addEventListener('click', clearSearch);
+function clearSearch() {
+    localStorage.clear(); 
+    location.reload();
 }
 
 fiveDayCall();
