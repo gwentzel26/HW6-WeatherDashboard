@@ -16,7 +16,7 @@
 ## **Usage <a id="usage"></a>** 
     Screenshot of Weather Dashboard in use
 
-  ![Screenshot of Weather Dashboard in use](assets/ExampleWeatherDashboard.png)
+  ![Screenshot of Weather Dashboard in use](./Assets/ExampleWeatherDashboard.png)
   
 ## **License <a id="license"></a>**
   Apache 2.0
