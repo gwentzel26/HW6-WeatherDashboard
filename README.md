@@ -8,6 +8,7 @@
 ## **Table of Contents** 
       
   - [Usage](#usage)
+  - [Tools](#tools)
   - [License](#license)
   - [Questions](#questions)
   - [Links](#links)
@@ -17,6 +18,10 @@
     Screenshot of Weather Dashboard in use
 
   ![Screenshot of Weather Dashboard in use](./Assets/ExampleWeatherDashboard.png)
+
+## **Tools <a id="tools"></a>** 
+
+  Javascript, Weather API, local storage, HTML, CSS
   
 ## **License <a id="license"></a>**
   Apache 2.0
