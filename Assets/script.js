@@ -9,7 +9,7 @@ var forecast = document.getElementById('forecast');
 var recentSearches = document.getElementById('recentSearches');
 var fiveDayTitle = document.getElementById('fiveDayTitle');
 var forecastDates = document.getElementById('forecastDates');
-var clearHisotry = document.getElementById('clearHistory');
+var clearHistory = document.getElementById('clearHistory');
 var searchArr ;
 var searchIndex ;
 
@@ -172,7 +172,7 @@ todayCityData.appendChild(currentDiv);
 })
 }
 
-clearHisotry.addEventListener('click', clearSearch);
+clearHistory.addEventListener('click', clearSearch);
 function clearSearch() {
     localStorage.clear(); 
     location.reload();

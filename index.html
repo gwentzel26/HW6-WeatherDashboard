@@ -1,56 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather Dashboard</title>
-    <link rel="stylesheet" href="./Assets/style.css">
-</head>
-<body>
-    <header>
+    <link rel="stylesheet" href="./Assets/style.css" />
+  </head>
+  <body id="background" class="homeImage">
+   
+      <div id="title">
         <h1>Weather Dashboard</h1>
-    </header>
-    
-    <main>
-    <div id="searchNav">
+      </div>
+    <div id="searchContainer">
+      <div id="searchNav">
         <h2>Search for a City:</h2>
-        <input id="userSearch" type="text" placeholder="Mexico City">
-        <Button id="searchBtn">Search</Button>
-    </div>
-    <div id="recentSearches">
-        <h2 id="searchHistory">Search History: </h2>
-        <ul id="searchList">
-
-        </ul>
+        <input id="userSearch" type="text" placeholder="Mexico City" />
+        <button id="searchBtn">Search</button>
+      </div>
+      <div id="recentSearches">
+        <h2 id="searchHistory">Search History:</h2>
+        <ul id="searchList"></ul>
         <button id="clearHistory">Clear History</button>
+      </div>
+
     </div>
+     
+    
     <div id="todayCityData">
         <h2 id="cityHeader"></h2>
-        
-    </div>
-    <div id="forecast">
+      </div>
+      <div id="forecast">
         <h2 id="fiveDayTitle">5-day Forecast:</h2>
         <h2 id="forecastDates"></h2>
-    </div>
-
-    </main>
-
-
-
-
-
-
-
-
-
-
-
-    
-
-
+      </div>
+   
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="./Assets/script.js"></script>
-</body>
+  </body>
 </html>
