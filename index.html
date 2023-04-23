@@ -12,11 +12,18 @@
       <div id="title">
         <h1>Weather Dashboard</h1>
       </div>
+      <div class="mainContent">
+
+      
     <div id="searchContainer">
       <div id="searchNav">
-        <h2>Search for a City:</h2>
+        <div id="searchText">
+          <h2>Search for a City:</h2>
+        </div>
+      <div id="inputContainer">
         <input id="userSearch" type="text" placeholder="Mexico City" />
         <button id="searchBtn">Search</button>
+      </div>
       </div>
       <div id="recentSearches">
         <h2 id="searchHistory">Search History:</h2>
@@ -26,16 +33,24 @@
 
     </div>
      
+    <div id="returnContainer">
+
     
     <div id="todayCityData">
         <h2 id="cityHeader"></h2>
-      </div>
-      <div id="forecast">
+    </div>
+      
+    <div id="forecast">
+      <div>
         <h2 id="fiveDayTitle">5-day Forecast:</h2>
-        <h2 id="forecastDates"></h2>
       </div>
-   
-
+        <div>
+          <h2 id="forecastDates"></h2>
+        </div>
+        
+      </div>
+    </div>
+      </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="./Assets/script.js"></script>
   </body>
