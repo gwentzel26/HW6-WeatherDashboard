@@ -159,7 +159,7 @@ function oneDayCall(lat, lon, fiveDayArr) {
         currentDiv.setAttribute("class", "card");
 
         currentDiv.innerHTML =  `
-        <h2 id="cityHeader">${cityName} </h2>
+        <h2 id="cityHeader">The weather in ${cityName} today is</h2>
         <h3 id="todayDate" >Date: ${today} </h3>
 <ul id = currentList>
     <li>Temperature: ${Math.round((currentData.temp - 273.15)*(9/5)+32) }°F</li>
